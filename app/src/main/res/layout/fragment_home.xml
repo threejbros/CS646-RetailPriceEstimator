@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".HomeFragment">-->
+
+<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/hello_blank_fragment" />-->
+
+<!--</FrameLayout>-->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/item_price_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/item_price_edit_text"
+        android:text="@string/item_price"
+        android:textSize="@dimen/item_price_text_size"
+        app:layout_constraintBaseline_toBaselineOf="@id/item_price_edit_text"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/item_price_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:hint="@string/example_price"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintLeft_toRightOf="@id/item_price_text_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/discount_options_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/discount_options"
+        android:textSize="@dimen/discount_options_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_price_text_view"/>
+
+    <CheckBox
+        android:id="@+id/checkpoint_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sale"
+        android:textSize="@dimen/checkbox_text_size"
+        android:onClick="onCheckBoxClicked"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/discount_options_text"/>
+
+    <CheckBox
+        android:id="@+id/checkpoint_clearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clearance"
+        android:textSize="@dimen/checkbox_text_size"
+        android:onClick="onCheckBoxClicked"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkpoint_sale"/>
+
+    <CheckBox
+        android:id="@+id/checkpoint_military_first_responder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/military_first_responders"
+        android:textSize="@dimen/checkbox_text_size"
+        android:onClick="onCheckBoxClicked"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkpoint_clearance"/>
+
+    <CheckBox
+        android:id="@+id/checkpoint_tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tax"
+        android:textSize="@dimen/checkbox_text_size"
+        android:onClick="onCheckBoxClicked"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkpoint_military_first_responder"/>
+
+    <TextView
+        android:id="@+id/final_price_text_view"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/final_price_text"
+        android:textSize="@dimen/item_price_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkpoint_tax"/>
+
+    <Button
+        android:id="@+id/calc_button"
+        android:text="@string/calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="calculateClick"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/final_price_text_view"/>
+
+    <Button
+        android:id="@+id/reset_button"
+        android:text="@string/reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="resetClick"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calc_button"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

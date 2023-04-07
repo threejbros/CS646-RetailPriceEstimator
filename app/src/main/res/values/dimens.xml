@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_price_text_size">30sp</dimen>
+    <dimen name="discount_options_text_size">24sp</dimen>
+    <dimen name="checkbox_text_size">20sp</dimen>
+</resources>
