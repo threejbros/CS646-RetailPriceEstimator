@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Price Estimator</string>
-    <string name="item_price">Item Price: </string>
+    <string name="item_price">Item Price: $</string>
     <string name="example_price">25.97</string>
     <string name="discount_options">Discount &amp; Tax Options: </string>
     <string name="sale">Sale</string>
     <string name="clearance">Clearance</string>
     <string name="military_first_responders">Military &amp; First Responders Discount</string>
     <string name="tax">Tax</string>
-    <string name="final_price_text">Estimated Final Price: $%d</string>
+    <string name="final_price_text">Estimated Final Price: $%s</string>
     <string name="calculate">Calculate</string>
     <string name="reset">Reset</string>
     <string name="title_home">Home</string>
@@ -23,9 +23,25 @@
     <string name="example_military_first_responders_percentage">20</string>
     <string name="example_tax_percentage">6.75</string>
     <string name="apply">Apply</string>
-
+    <string name="title_settings">Settings</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

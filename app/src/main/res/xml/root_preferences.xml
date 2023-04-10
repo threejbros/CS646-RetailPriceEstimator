@@ -1,0 +1,23 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        app:key="sale_percentage"
+        app:title="@string/edit_sales"
+        app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+        app:key="clearance_percentage"
+        app:title="@string/edit_clearance"
+        app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+        app:key="military_first_responders_percentage"
+        app:title="@string/edit_military_first_responder"
+        app:useSimpleSummaryProvider="true" />
+
+    <EditTextPreference
+        app:key="tax_percentage"
+        app:title="@string/edit_tax"
+        app:useSimpleSummaryProvider="true" />
+
+</PreferenceScreen>
