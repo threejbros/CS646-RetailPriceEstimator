@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/clear_settings"
+        android:title="@string/clear_settings">
+    </item>
+    <item android:id="@+id/reset_settings"
+        android:title="@string/reset_settings">
+    </item>
+</menu>

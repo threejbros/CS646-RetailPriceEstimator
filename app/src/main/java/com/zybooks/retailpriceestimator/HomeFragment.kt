@@ -1,10 +1,8 @@
 package com.zybooks.retailpriceestimator
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -56,21 +54,18 @@ class HomeFragment : Fragment() {
 
     private var NOT_SELECTED_SALE_VALUE: Double = 0.0
     private var TAX_NOT_SELECTED_VALUE: Double = 0.0
+    private var ZERO_VALUE: Double = 0.0
+    private var MAX_PRICE: Double = 1000.0
 
     private var initialFinalPrice: String = "0.00"
 
+    private var invalidDialog = InvalidDialogFragment()
+    private var invalidOutputDialog = InvalidOutputDialogFragment()
+    private var zeroInputDialog = zeroInputDialogFragment()
 
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
 
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireActivity())
 
@@ -97,6 +92,8 @@ class HomeFragment : Fragment() {
         val newTaxValue = newTaxValueStr?.toDoubleOrNull() ?: (taxDefaultValue * 100.0)
         // make it into a decimal value
         taxPercentValue = newTaxValue / 100.0
+
+
 
     }
 
@@ -141,9 +138,28 @@ class HomeFragment : Fragment() {
         // Convert the text into an integer
         val itemPrice = itemPriceStr.toDoubleOrNull() ?: 0.0
 
+        if (itemPrice > MAX_PRICE) {
+            invalidDialog.show(parentFragmentManager, "invalidDialog")
+            itemPriceEditText.setText("")
+            return
+        }
+
+        if (itemPrice == ZERO_VALUE) {
+            zeroInputDialog.show(parentFragmentManager, "zeroInputDialog")
+            itemPriceEditText.setText("")
+            return
+        }
+
         val calc = FinalPriceCalculator(itemPrice, saleValueArg, clearanceValueArg,
                                         militaryFirstResponderValueArg, taxValueArg)
         val estimatedFinalPrice = calc.finalPrice
+
+        var finalPriceDouble: Double = estimatedFinalPrice.toDoubleOrNull() ?: 0.0
+
+        if (finalPriceDouble < 0.0) {
+            invalidOutputDialog.show(parentFragmentManager, "invalidOutputDialog")
+            return
+        }
 
         val estimatedFinalPriceText = getString(R.string.final_price_text, estimatedFinalPrice)
         finalPriceTextView.setText(estimatedFinalPriceText)
@@ -195,9 +211,11 @@ class HomeFragment : Fragment() {
 
         saleCheckBox = parentView.findViewById<CheckBox>(R.id.checkpoint_sale)
         saleCheckBox.setOnClickListener({onCheckBoxClicked(saleCheckBox)})
+        registerForContextMenu(saleCheckBox)
 
         clearanceCheckBox = parentView.findViewById<CheckBox>(R.id.checkpoint_clearance)
         clearanceCheckBox.setOnClickListener({onCheckBoxClicked(clearanceCheckBox)})
+        registerForContextMenu(clearanceCheckBox)
 
         militaryFirstResponderCheckBox = parentView.findViewById<CheckBox>(R.id.checkpoint_military_first_responder)
         militaryFirstResponderCheckBox.setOnClickListener({onCheckBoxClicked(militaryFirstResponderCheckBox)})
@@ -214,6 +232,35 @@ class HomeFragment : Fragment() {
 
         return parentView
     }
+//
+//
+//    override fun onCreateContextMenu(menu: ContextMenu?,
+//                                     v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+//        super.onCreateContextMenu(menu, v, menuInfo)
+//        menuInflater.inflate(R.menu.context_menu, menu)
+//    }
+//
+//    override fun onContextItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.clear_settings -> {
+//                var settings: SharedPreferences = getSharedPreferences("sale_percentage",
+//                    AppCompatActivity.MODE_PRIVATE
+//                )
+//                var editor: SharedPreferences.Editor = settings.edit()
+//                editor.putString("Sale", "")
+////                diceList[0].number++
+////                showDice()
+//                true
+//            }
+//            R.id.reset_settings -> {
+////                diceList[0].number--
+////                showDice()
+//                true
+//            }
+//            else -> super.onContextItemSelected(item)
+//        }
+//    }
+
 
     companion object {
         /**

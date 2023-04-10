@@ -24,6 +24,21 @@
     <string name="example_tax_percentage">6.75</string>
     <string name="apply">Apply</string>
     <string name="title_settings">Settings</string>
+    <string name="invalid_input">Invalid Input</string>
+    <string name="invalid_input_message">Item Price cannot be greater than $1,000.</string>
+    <string name="ok">OK</string>
+    <string name="invalid_output">Invalid Output</string>
+    <string name="invalid_output_message">Final Price is negative.\nPlease make sure that your settings are valid.\n(i.e. Each value is less than 100.)</string>
+    <string name="zero_input_message">Please Enter a Non-Zero value for Item Price.</string>
+    <string name="promoImage">Promo</string>
+<!--    <string name="help_instructions">Enter Item Price \n(up to $1000) to estimate \nfinal price after \nall discounts/tax.</string>-->
+    <string name="help_instructions">Enter Item Price \n(up to $1000) to estimate final price after all discounts/tax.</string>
+    <string name="warning_instructions">NOTE: discount/tax percentages must be less than 100</string>
+
+
+
+    <string name="clear_settings">Clear Settings</string>
+    <string name="reset_settings">Reset To Default Settings</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -4,4 +4,6 @@
     <dimen name="edit_values_text_size">30sp</dimen>
     <dimen name="discount_options_text_size">22sp</dimen>
     <dimen name="checkbox_text_size">20sp</dimen>
+    <dimen name="calcualte_button_text_size">20sp</dimen>
+    <dimen name="reset_button_text_size">17sp</dimen>
 </resources>

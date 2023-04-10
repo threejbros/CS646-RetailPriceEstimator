@@ -11,11 +11,11 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_edit"
-        android:name="com.zybooks.retailpriceestimator.EditFragment"
-        android:label="@string/title_edit"
-        tools:layout="@layout/fragment_edit" />
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_edit"-->
+<!--        android:name="com.zybooks.retailpriceestimator.EditFragment"-->
+<!--        android:label="@string/title_edit"-->
+<!--        tools:layout="@layout/fragment_edit" />-->
 
     <fragment
         android:id="@+id/navigation_settings"

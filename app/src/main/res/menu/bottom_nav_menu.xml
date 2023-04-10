@@ -6,10 +6,10 @@
         android:icon="@drawable/home_icon"
         android:title="@string/title_home" />
 
-    <item
-        android:id="@+id/navigation_edit"
-        android:icon="@drawable/edit_icon"
-        android:title="@string/title_edit" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_edit"-->
+<!--        android:icon="@drawable/edit_icon"-->
+<!--        android:title="@string/title_edit" />-->
 
     <item
         android:id="@+id/navigation_settings"
