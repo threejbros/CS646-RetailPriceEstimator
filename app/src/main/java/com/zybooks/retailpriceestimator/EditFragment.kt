@@ -1,5 +1,9 @@
 package com.zybooks.retailpriceestimator
 
+/*
+ * NOT USED because I did not implement the edit fragment page, and rather used a settings page.
+ */
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

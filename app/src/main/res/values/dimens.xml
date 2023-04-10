@@ -6,4 +6,17 @@
     <dimen name="checkbox_text_size">20sp</dimen>
     <dimen name="calcualte_button_text_size">20sp</dimen>
     <dimen name="reset_button_text_size">17sp</dimen>
+    <dimen name="constraint_layout_margin_horizontal">10dp</dimen>
+    <dimen name="constraint_layout_margin_vertical">10dp</dimen>
+    <dimen name="item_price_edit_text_size">30sp</dimen>
+    <dimen name="discount_options_margin_top">20dp</dimen>
+    <dimen name="final_price_margin_top">20dp</dimen>
+    <dimen name="calc_button_layout_height">70dp</dimen>
+    <dimen name="calc_button_layout_margin_top">50dp</dimen>
+    <dimen name="reset_button_layout_margin_top">15dp</dimen>
+    <dimen name="promo_image_layout_margin_top">10dp</dimen>
+    <dimen name="instruction_text_size">30sp</dimen>
+    <dimen name="instruction_layout_margin">30dp</dimen>
+    <dimen name="warning_text_size">30sp</dimen>
+    <dimen name="warning_layout_margin">30dp</dimen>
 </resources>

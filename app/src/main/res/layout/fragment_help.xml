@@ -13,16 +13,15 @@
         android:layout_height="wrap_content"
         android:src="@drawable/promo"
         android:contentDescription="@string/promoImage"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/promo_image_layout_margin_top"
         app:layout_constraintBottom_toTopOf="@id/instructionsTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/instructionsTextView"
-        android:textSize="30sp"
-        android:layout_margin="30dp"
-        android:layout_marginHorizontal="60dp"
+        android:textSize="@dimen/instruction_text_size"
+        android:layout_margin="@dimen/instruction_layout_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -33,8 +32,8 @@
 
     <TextView
         android:id="@+id/warningsTextView"
-        android:textSize="30sp"
-        android:layout_margin="30dp"
+        android:textSize="@dimen/warning_text_size"
+        android:layout_margin="@dimen/warning_layout_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -42,7 +41,5 @@
         app:layout_constraintTop_toBottomOf="@id/instructionsTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="10dp">
+    android:layout_marginHorizontal="@dimen/constraint_layout_margin_horizontal"
+    android:layout_marginVertical="@dimen/constraint_layout_margin_vertical">
 
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="5"
-        android:textSize="30sp"
+        android:textSize="@dimen/item_price_edit_text_size"
         android:hint="@string/example_price"
         android:importantForAutofill="no"
         android:inputType="number|numberDecimal"
@@ -38,7 +38,7 @@
         android:id="@+id/discount_options_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/discount_options_margin_top"
         android:text="@string/discount_options"
         android:textSize="@dimen/discount_options_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -50,7 +50,6 @@
         android:layout_height="wrap_content"
         android:text="@string/sale"
         android:textSize="@dimen/checkbox_text_size"
-        android:onClick="onCheckBoxClicked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/discount_options_text"/>
 
@@ -60,7 +59,6 @@
         android:layout_height="wrap_content"
         android:text="@string/clearance"
         android:textSize="@dimen/checkbox_text_size"
-        android:onClick="onCheckBoxClicked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkpoint_sale"/>
 
@@ -70,7 +68,6 @@
         android:layout_height="wrap_content"
         android:text="@string/military_first_responders"
         android:textSize="@dimen/checkbox_text_size"
-        android:onClick="onCheckBoxClicked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkpoint_clearance"/>
 
@@ -80,13 +77,12 @@
         android:layout_height="wrap_content"
         android:text="@string/tax"
         android:textSize="@dimen/checkbox_text_size"
-        android:onClick="onCheckBoxClicked"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkpoint_military_first_responder"/>
 
     <TextView
         android:id="@+id/final_price_text_view"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/final_price_margin_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/final_price_text"
@@ -98,9 +94,8 @@
         android:id="@+id/calc_button"
         android:text="@string/calculate"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="50dp"
-        android:onClick="calculateClick"
+        android:layout_height="@dimen/calc_button_layout_height"
+        android:layout_marginTop="@dimen/calc_button_layout_margin_top"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/final_price_text_view"
         style="@style/CalcButton"/>
@@ -110,8 +105,7 @@
         android:text="@string/reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="resetClick"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/reset_button_layout_margin_top"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calc_button"
         style="@style/ResetButton"/>
