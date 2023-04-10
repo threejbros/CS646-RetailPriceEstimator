@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
     private var militaryFirstResponderDefaultValue: Double = 0.2
     private var taxDefaultValue: Double = 0.0775
 
-    // WILL NEED TO BE CHANGED LATER TO ACCOMODATE SETTINGS
     private var salePercentValue: Double = saleDefaultValue
     private var clearancePercentValue: Double = clearanceDefaultValue
     private var militaryFirstResponderPercentValue: Double = militaryFirstResponderDefaultValue
@@ -48,9 +47,6 @@ class HomeFragment : Fragment() {
     // Default of tax should be 0 because if tax is not selected then there is no
     // tax to be calculated.
     private var taxValueArg: Double = 0.0
-
-
-    private var totalPercentage: Double = 1.0
 
     private var NOT_SELECTED_SALE_VALUE: Double = 0.0
     private var TAX_NOT_SELECTED_VALUE: Double = 0.0
@@ -154,7 +150,7 @@ class HomeFragment : Fragment() {
                                         militaryFirstResponderValueArg, taxValueArg)
         val estimatedFinalPrice = calc.finalPrice
 
-        var finalPriceDouble: Double = estimatedFinalPrice.toDoubleOrNull() ?: 0.0
+        val finalPriceDouble: Double = estimatedFinalPrice.toDoubleOrNull() ?: 0.0
 
         if (finalPriceDouble < 0.0) {
             invalidOutputDialog.show(parentFragmentManager, "invalidOutputDialog")
@@ -206,6 +202,7 @@ class HomeFragment : Fragment() {
         itemPriceEditText = parentView.findViewById(R.id.item_price_edit_text)
         finalPriceTextView = parentView.findViewById(R.id.final_price_text_view)
 
+        // Set Button and checkbox listeners.
         calculateBtn = parentView.findViewById<Button>(R.id.calc_button)
         calculateBtn.setOnClickListener { calculateClick(calculateBtn) }
 
@@ -226,40 +223,26 @@ class HomeFragment : Fragment() {
         resetBtn = parentView.findViewById<Button>(R.id.reset_button)
         resetBtn.setOnClickListener({resetClick(resetBtn)})
 
+
+        // Set numeric texts
         val initialFinalPriceText = getString(R.string.final_price_text, initialFinalPrice)
         finalPriceTextView.setText(initialFinalPriceText)
+
+        val currentSaleValueText = getString(R.string.sale, (salePercentValue*100.0).toString())
+        saleCheckBox.setText(currentSaleValueText)
+
+        val currentClearanceValueText = getString(R.string.clearance, (clearancePercentValue*100.0).toString())
+        clearanceCheckBox.setText(currentClearanceValueText)
+
+        val currentMilitaryFirstResponderValueText = getString(R.string.military_first_responders, (militaryFirstResponderPercentValue*100.0).toString())
+        militaryFirstResponderCheckBox.setText(currentMilitaryFirstResponderValueText)
+
+        val currentTaxValueText = getString(R.string.tax, (taxPercentValue*100.0).toString())
+        taxCheckBox.setText(currentTaxValueText)
 
 
         return parentView
     }
-//
-//
-//    override fun onCreateContextMenu(menu: ContextMenu?,
-//                                     v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
-//        super.onCreateContextMenu(menu, v, menuInfo)
-//        menuInflater.inflate(R.menu.context_menu, menu)
-//    }
-//
-//    override fun onContextItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.clear_settings -> {
-//                var settings: SharedPreferences = getSharedPreferences("sale_percentage",
-//                    AppCompatActivity.MODE_PRIVATE
-//                )
-//                var editor: SharedPreferences.Editor = settings.edit()
-//                editor.putString("Sale", "")
-////                diceList[0].number++
-////                showDice()
-//                true
-//            }
-//            R.id.reset_settings -> {
-////                diceList[0].number--
-////                showDice()
-//                true
-//            }
-//            else -> super.onContextItemSelected(item)
-//        }
-//    }
 
 
     companion object {

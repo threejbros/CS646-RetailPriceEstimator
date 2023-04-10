@@ -3,10 +3,10 @@
     <string name="item_price">Item Price: $</string>
     <string name="example_price">25.97</string>
     <string name="discount_options">Discount &amp; Tax Options: </string>
-    <string name="sale">Sale</string>
-    <string name="clearance">Clearance</string>
-    <string name="military_first_responders">Military &amp; First Responders Discount</string>
-    <string name="tax">Tax</string>
+    <string name="sale">Sale (%s%% off)</string>
+    <string name="clearance">Clearance (%s%% off)</string>
+    <string name="military_first_responders">Military &amp; First Responders Discount (%s%% off)</string>
+    <string name="tax">Tax (%s%%)</string>
     <string name="final_price_text">Estimated Final Price: $%s</string>
     <string name="calculate">Calculate</string>
     <string name="reset">Reset</string>

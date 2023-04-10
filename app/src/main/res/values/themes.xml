@@ -5,9 +5,6 @@
         <item name="colorPrimary">@color/navy</item>
         <item name="colorPrimaryVariant">@color/royal</item>
         <item name="colorOnPrimary">@color/white</item>
-<!--        <item name="colorPrimary">@color/purple_500</item>-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/white</item>-->
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/gold</item>
         <item name="colorSecondaryVariant">@color/silver</item>
