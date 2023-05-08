@@ -8,18 +8,25 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.preference.PreferenceManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import androidx.appcompat.app.AppCompatActivity
+import kotlin.math.abs
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+const val SHAKE_THRESHOLD = 10
 
 /**
  * A simple [Fragment] subclass.
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), SensorEventListener {
+    private var lastAcceleration = SensorManager.GRAVITY_EARTH
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
+
     private lateinit var itemPriceEditText: EditText
     private lateinit var finalPriceTextView: TextView
     private lateinit var saleCheckBox: CheckBox
@@ -89,8 +96,15 @@ class HomeFragment : Fragment() {
         // make it into a decimal value
         taxPercentValue = newTaxValue / 100.0
 
-
-
+        /*
+         * NOTE: Cannot just use "getSystemService(AppCompatActivity.SENSOR_SERVICE) as SensorManager"
+         *       because getSystemService() is a method from Context (which is extended by Activity.
+         *       However, Fragment does not have this function, so we first need to get a reference to
+         *       Actiity with getActivity()
+         * Source: https://stackoverflow.com/questions/24427414/getsystemservices-is-undefined-when-called-in-a-fragment
+         */
+        sensorManager = getActivity()?.getSystemService(AppCompatActivity.SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     }
 
     fun onCheckBoxClicked(view: View) {
@@ -162,7 +176,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    fun resetClick(view: View) {
+    fun resetClick() {
         // clear item price
         val resetPriceText = ""
         itemPriceEditText.setText(resetPriceText)
@@ -221,7 +235,7 @@ class HomeFragment : Fragment() {
         taxCheckBox.setOnClickListener({onCheckBoxClicked(taxCheckBox)})
 
         resetBtn = parentView.findViewById<Button>(R.id.reset_button)
-        resetBtn.setOnClickListener({resetClick(resetBtn)})
+        resetBtn.setOnClickListener({resetClick()})
 
 
         // Set numeric texts
@@ -242,5 +256,40 @@ class HomeFragment : Fragment() {
 
 
         return parentView
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this, accelerometer)
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        // Get accelerometer values
+        val x: Float = event.values[0]
+        val y: Float = event.values[1]
+        val z: Float = event.values[2]
+
+        // Find magnitude of acceleration
+        val currentAcceleration: Float = x * x + y * y + z * z
+
+        // Calculate difference between 2 readings
+        val delta = currentAcceleration - lastAcceleration
+
+        // Save for next time
+        lastAcceleration = currentAcceleration
+
+        // Detect shake
+        if (abs(delta) > SHAKE_THRESHOLD) {
+            resetClick()
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        // Nothing to do
     }
 }
