@@ -27,6 +27,8 @@ class HomeFragment : Fragment(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private var accelerometer: Sensor? = null
 
+    private lateinit var soundEffects: SoundEffects
+
     private lateinit var itemPriceEditText: EditText
     private lateinit var finalPriceTextView: TextView
     private lateinit var saleCheckBox: CheckBox
@@ -105,6 +107,15 @@ class HomeFragment : Fragment(), SensorEventListener {
          */
         sensorManager = getActivity()?.getSystemService(AppCompatActivity.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+
+        soundEffects = SoundEffects.getInstance(getActivity()?.getApplicationContext())
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // release SoundPool resources
+        soundEffects.release()
     }
 
     fun onCheckBoxClicked(view: View) {
@@ -163,6 +174,8 @@ class HomeFragment : Fragment(), SensorEventListener {
         val calc = FinalPriceCalculator(itemPrice, saleValueArg, clearanceValueArg,
                                         militaryFirstResponderValueArg, taxValueArg)
         val estimatedFinalPrice = calc.finalPrice
+
+        soundEffects.playCalculateSound()
 
         val finalPriceDouble: Double = estimatedFinalPrice.toDoubleOrNull() ?: 0.0
 
