@@ -47,5 +47,6 @@ class SoundEffects private constructor(context: Context?){
     fun release() {
         soundPool?.release()
         soundPool = null
+        instance = null
     }
 }

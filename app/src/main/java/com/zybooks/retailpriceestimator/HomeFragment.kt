@@ -98,6 +98,7 @@ class HomeFragment : Fragment(), SensorEventListener {
         // make it into a decimal value
         taxPercentValue = newTaxValue / 100.0
 
+        // This is for shake to Reset
         /*
          * NOTE: Cannot just use "getSystemService(AppCompatActivity.SENSOR_SERVICE) as SensorManager"
          *       because getSystemService() is a method from Context (which is extended by Activity.
@@ -108,10 +109,15 @@ class HomeFragment : Fragment(), SensorEventListener {
         sensorManager = getActivity()?.getSystemService(AppCompatActivity.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
+        // This is for sound on Calculate.
         soundEffects = SoundEffects.getInstance(getActivity()?.getApplicationContext())
 
     }
 
+    // NOTE: you cannot have onDestroy() because it releases all the sounds the moment you switch to
+    //       a different fragment. since onDestroy() is called every time, fragment is switched. we get
+    //       SoundEffect's class variable instance is not null, and we can't update it.
+    // Alternatively, I set the instance variable to null in SoundEffects.Release()
     override fun onDestroy() {
         super.onDestroy()
         // release SoundPool resources
